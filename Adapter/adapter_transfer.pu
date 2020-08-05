@@ -24,7 +24,7 @@ package Object {
 }
 
 Main -down-> Print : use
-Print <|-right- PrintBanner
-PrintBanner o-right-> Banner
+Print <|-right- PrintBanner : implements
+PrintBanner o-right-> Banner : has
 
 @enduml

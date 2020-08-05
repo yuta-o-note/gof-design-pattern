@@ -26,7 +26,7 @@ package Object {
     }
 }
 
-Print <|.. PrintBanner
-PrintBanner -right-|> Banner
+Print <|.. PrintBanner : implements
+PrintBanner -right-|> Banner : extends
 
 @enduml
