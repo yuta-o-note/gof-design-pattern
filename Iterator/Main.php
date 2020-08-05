@@ -41,6 +41,11 @@ class BookShelf implements AggregateInterface
         $this->books[] = $book;
     }
 
+    public function getBooks(): array
+    {
+        return $this->books;
+    }
+
     public function getBookAt(int $index): Book
     {
         return $this->books[$index];
@@ -85,9 +90,14 @@ function main()
     $bookShelf->appendBook(new Book('book-C'));
     $bookShelf->appendBook(new Book('book-D'));
 
-    $iterator = new BookShelfIterator($bookShelf);
+    $iterator = $bookShelf->iterator();
     while ($iterator->hasNext()) {
         echo $iterator->next()->getName() . "\n";
+    }
+
+    $books = $bookShelf->getBooks();
+    for ($i = 0; $i < count($books); $i++) {
+        echo $books[$i]->getName() . "\n";
     }
 }
 
