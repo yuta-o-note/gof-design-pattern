@@ -1,0 +1,30 @@
+@startuml
+
+skinparam Linetype ortho
+top to bottom direction
+
+class Main
+
+package Object {
+    class Print {
+        printWeak()
+        printStrong()
+    }
+
+    class PrintBanner {
+        banner
+        printWeak()
+        printStrong()
+    }
+
+    class Banner {
+        showWithParen()
+        showWithAster()
+    }
+}
+
+Main -down-> Print : use
+Print <|-right- PrintBanner
+PrintBanner o-right-> Banner
+
+@enduml
