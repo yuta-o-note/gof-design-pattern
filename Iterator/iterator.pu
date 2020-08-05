@@ -1,40 +1,47 @@
 @startuml
 
-interface Aggregate {
-    iterator()
-}
-interface Iterator {
-    hasNext()
-    next()
-}
+skinparam linetype ortho
+top to bottom direction
 
-Aggregate --> Iterator : create
-
-class BookShelf {
-    books
-    last
-    getBookAt()
-    appendBook()
-    getLength()
-    iterator()
+package Interface {
+    interface Aggregate {
+        iterator()
+    }
+    interface Iterator {
+        hasNext()
+        next()
+    }
 }
 
-class BookShelfIterator {
-    bookShelf
-    index
-    hasNext()
-    next()
+Aggregate -right-> Iterator : create
+
+package Object {
+    class BookShelf {
+        books
+        last
+        getBookAt()
+        appendBook()
+        getLength()
+        iterator()
+    }
+
+    class BookShelfIterator {
+        bookShelf
+        index
+        hasNext()
+        next()
+    }
+
+    class Book {
+        name
+        getName()
+    }
 }
 
 Aggregate <|.. BookShelf
 Iterator <|.. BookShelfIterator
 
-BookShelf <--o BookShelfIterator
-
-class Book {
-    name
-    getName()
-}
+BookShelf <-right-o BookShelfIterator
 
 BookShelf o--> Book
 
