@@ -1,0 +1,28 @@
+@startuml
+
+skinparam linetype ortho
+top to bottom direction
+
+abstract class AbstractClass {
+    templateMethod()
+    method1()
+    method2()
+    method3()
+}
+
+class ConcreateClassA {
+    method1()
+    method2()
+    method3()
+}
+
+class ConcreateClassB {
+    method1()
+    method2()
+    method3()
+}
+
+AbstractClass <|-- ConcreateClassA : extends
+AbstractClass <|-- ConcreateClassB : extends
+
+@enduml
