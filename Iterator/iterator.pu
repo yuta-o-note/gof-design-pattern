@@ -3,46 +3,27 @@
 skinparam linetype ortho
 top to bottom direction
 
-package Interface {
-    interface Aggregate {
-        iterator()
-    }
-    interface Iterator {
-        hasNext()
-        next()
-    }
+interface Aggregate<<集合>> {
+    iterator()
+}
+interface Iterator<<反復子>> {
+    hasNext()
+    next()
 }
 
-Aggregate -right-> Iterator : create
+Aggregate .right.> Iterator : create
 
-package Object {
-    class BookShelf {
-        books
-        last
-        getBookAt()
-        appendBook()
-        getLength()
-        iterator()
-    }
-
-    class BookShelfIterator {
-        bookShelf
-        index
-        hasNext()
-        next()
-    }
-
-    class Book {
-        name
-        getName()
-    }
+class ConcreteAggregate {
+    iterator()
 }
 
-Aggregate <|.. BookShelf
-Iterator <|.. BookShelfIterator
+class ConcreteIterator {
+    hasNext()
+    next()
+}
 
-BookShelf <-right-o BookShelfIterator
-
-BookShelf o--> Book
+Aggregate <|-- ConcreteAggregate
+Iterator <|-- ConcreteIterator
+ConcreteAggregate <-left-o ConcreteIterator : create
 
 @enduml

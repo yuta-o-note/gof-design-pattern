@@ -1,9 +1,13 @@
 <?php
 
-interface PrintInterface
+/**
+ * 委譲を利用して実現するパターン
+ */
+
+abstract class PrintAbstract
 {
-    public function printWeak(): void;
-    public function printStrong(): void;
+    abstract public function printWeak(): void;
+    abstract public function printStrong(): void;
 }
 
 class Banner
@@ -26,7 +30,7 @@ class Banner
     }
 }
 
-class PrintBanner extends Banner implements PrintInterface
+class PrintBanner extends PrintAbstract
 {
     private $banner;
 

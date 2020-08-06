@@ -1,32 +1,21 @@
 @startuml
 
 skinparam Linetype ortho
-top to bottom direction
+left to right direction
 
-class Main
-
-package Interface {
-    interface Print {
-        printWeak()
-        printStrong()
-    }
+interface Target {
+    requiredMethod()
 }
 
-Main -down-> Print : use
-
-package Object {
-    class PrintBanner {
-        printWeak()
-        printStrong()
-    }
-
-    class Banner {
-        showWithParen()
-        showWithAster()
-    }
+class Adapter {
+    requiredMethod()
 }
 
-Print <|.. PrintBanner : implements
-PrintBanner -right-|> Banner : extends
+class Adaptee {
+    oldMethod()
+}
+
+Target <|.. Adapter : implements
+Adapter --|> Adaptee : extends
 
 @enduml

@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * 継承を利用して実現するパターン
+ */
+
 interface PrintInterface
 {
     public function printWeak(): void;
@@ -39,11 +43,11 @@ class PrintBanner extends Banner implements PrintInterface
     }
 }
 
-function main()
+function main(PrintInterface $print)
 {
-    $print = new PrintBanner('Hello');
     $print->printWeak();
     $print->printStrong();
 }
 
-main();
+$print = new PrintBanner('Hello');
+main($print);
