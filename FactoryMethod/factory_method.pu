@@ -1,0 +1,33 @@
+@startuml
+
+skinparam linetype ortho
+top to bottom direction
+
+abstract class Factory {
+    templateMethod()
+    factoryMethod()
+}
+
+abstract class Product {
+    method1()
+    method2()
+    method3()
+}
+
+Factory -right-> Product : create
+
+class ConcreteFactory {
+    factoryMethod()
+}
+
+class ConcreteProduct {
+    method1()
+    method2()
+    method3()
+}
+
+ConcreteFactory .up.> Factory : extends
+ConcreteProduct .up.> Product : extends
+ConcreteFactory -right-> ConcreteProduct : create
+
+@enduml
